@@ -38,7 +38,7 @@ func (s *Echarge) CreateClient(body RequestClient) (*ResponseClient, error) {
 
 func (s *Echarge) ListClient(param string) (*ResponseClient, error) {
 	response := ResponseClient{}
-	url := string(s.environment + "v3/customers/cpfCnpj=")
+	url := fmt.Sprintf(string(s.environment+"v3/customers/cpfCnpj=%s"), param)
 	resp := request.
 		NewWithContext(context.Background()).
 		GET(url).
@@ -66,7 +66,7 @@ func (s *Echarge) ListClient(param string) (*ResponseClient, error) {
 
 func (s *Echarge) UpdateClient(param string, body RequestClient) (*ResponseClient, error) {
 	response := ResponseClient{}
-	url := string(s.environment + "v3/customers/" + Environment(param))
+	url := fmt.Sprintf(string(s.environment+"v3/customers/%s"), param)
 	resp := request.
 		NewWithContext(context.Background()).
 		PUT(url).
