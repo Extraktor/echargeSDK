@@ -94,14 +94,12 @@ func (s *Echarge) UpdateClient(param string, body RequestClient) (*ResponseClien
 }
 
 func (s *Echarge) DeleteClient(param string) error {
-	response := ResponseClient{}
 	url := fmt.Sprintf(string(s.environment+"v3/customers/%s"), param)
 	resp := request.
 		NewWithContext(context.Background()).
-		PUT(url).
+		DELETE(url).
 		AddHeader(s.header).
-		Send().
-		Scan(&response)
+		Send()
 
 	defer resp.Close()
 
