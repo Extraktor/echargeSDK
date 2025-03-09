@@ -6,6 +6,14 @@ type RequestCharge struct {
 	DueDate     string  `json:"dueDate" bson:"due_date"`
 	Description string  `json:"description" bson:"description"`
 	Value       float64 `json:"value" bson:"value"`
+	Split       []Slipt `json:"split" bson:"split"`
+}
+
+type Slipt struct {
+	WalletID          string  `json:"walletid" bson:"wallet_id"`
+	ExternalReference string  `json:"external_reference" bson:"external_reference"`
+	Description       string  `json:"description" bson:"description"`
+	FixedValue        float64 `json:"fixedValue" bson:"fixed_value"`
 }
 
 type ResponseCharge struct {
